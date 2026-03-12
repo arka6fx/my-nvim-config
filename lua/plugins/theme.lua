@@ -1,0 +1,1 @@
+/home/arka/.config/omarchy/current/theme/neovim.lua
