@@ -1,12 +1,15 @@
 return {
-  "saghen/blink.cmp",
-  opts = {
-    keymap = {
-      preset = "default",
-      -- This disables <Enter> for confirming suggestions
-      ["<CR>"] = { "fallback" },
-      -- Now use <Tab> or <C-y> to accept suggestions
-      ["<Tab>"] = { "select_and_accept", "fallback" },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "default",
+
+        ["<CR>"] = { "accept", "fallback" }, -- FIX: enable Enter
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<C-Space>"] = { "show", "fallback" },
+      },
     },
   },
 }
