@@ -25,6 +25,13 @@ vim.opt.shiftwidth = 4 -- Size of an indent
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
 vim.opt.softtabstop = 4 -- Number of spaces tabs count for while editing
 vim.opt.expandtab = true -- Use spaces instead of tabs
+
+vim.filetype.add({
+  extension = {
+    prisma = "prisma",
+  },
+})
+
 if vim.g.neovide then
   vim.defer_fn(function()
     vim.cmd.colorscheme(vim.g.colors_name)
