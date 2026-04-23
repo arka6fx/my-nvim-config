@@ -21,10 +21,30 @@ if vim.g.neovide then
   vim.keymap.set("t", "<C-v>", '<C-\\><C-n>"+pa', { noremap = true, silent = true })
 end
 
-vim.opt.shiftwidth = 4 -- Size of an indent
-vim.opt.tabstop = 4 -- Number of spaces tabs count for
-vim.opt.softtabstop = 4 -- Number of spaces tabs count for while editing
-vim.opt.expandtab = true -- Use spaces instead of tabs
+-- Indentation: default 2-space across the repo. .editorconfig / LSP formatters
+-- still override per-filetype when they exist.
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+-- Performance: don't let giant node_modules / .next trees flood file watchers
+-- or the jumplist.
+vim.opt.wildignore:append({
+  "*/node_modules/*",
+  "*/.next/*",
+  "*/.turbo/*",
+  "*/dist/*",
+  "*/build/*",
+  "*/.git/*",
+  "*/coverage/*",
+  "*/.cache/*",
+  "*.lock",
+  "pnpm-lock.yaml",
+  "package-lock.json",
+  "yarn.lock",
+})
 
 vim.filetype.add({
   extension = {

@@ -5,9 +5,11 @@ return {
       ensure_installed = {
         -- formatters
         "prettier",
-        "black",
+        "prettierd",
         "stylua",
         "shfmt",
+        "black",
+        "isort",
         "clang-format",
         "goimports",
         "gofumpt",
@@ -15,16 +17,10 @@ return {
         -- linters
         "eslint_d",
         "shellcheck",
-        "flake8",
         "golangci-lint",
 
-        -- python helpers
-        "isort",
-        "autopep8",
+        -- debug / extras
         "debugpy",
-
-        -- tools
-        "tree-sitter-cli",
       },
     },
   },
@@ -37,17 +33,18 @@ return {
         "cssls",
         "css_variables",
         "cssmodules_ls",
+        "eslint",
+        "gopls",
         "html",
         "jdtls",
         "jsonls",
         "lua_ls",
         "prismals",
         "pyright",
-        "pylsp",
         "tailwindcss",
-        "ts_ls",
+        "vtsls",
         "vimls",
-        "gopls",
+        "yamlls",
       },
       automatic_installation = true,
     },
