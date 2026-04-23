@@ -7,6 +7,23 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+-- Kill LazyVim's auto spell-check on markdown/text/gitcommit.
+-- It runs on VeryLazy, so we schedule the deletion after setup.
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    pcall(vim.api.nvim_del_augroup_by_name, "lazyvim_wrap_spell")
+  end,
+})
+
+-- Belt-and-suspenders: force spell off on the filetypes LazyVim re-enables it on.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "gitcommit", "text" },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+
 local function set_prisma_highlights()
   vim.api.nvim_set_hl(0, "@keyword.prisma", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@attribute.prisma", { link = "Function" })

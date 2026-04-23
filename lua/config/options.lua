@@ -29,6 +29,10 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+-- No spell-check anywhere. Prose files (README, AGENTS.md, commit messages)
+-- should not have red squiggles on domain words like "Turborepo" or "eslint".
+vim.opt.spell = false
+
 -- Performance: don't let giant node_modules / .next trees flood file watchers
 -- or the jumplist.
 vim.opt.wildignore:append({
